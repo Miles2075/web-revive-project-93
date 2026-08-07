@@ -62,7 +62,7 @@ function loadScript(src: string) {
     const el = document.createElement("script");
     el.src = src;
     el.async = false;
-    el.dataset.si = src;
+    el.dataset["si"] = src;
     el.onload = () => resolve();
     el.onerror = () => resolve();
     document.body.appendChild(el);
