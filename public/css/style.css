@@ -1933,3 +1933,9 @@ textarea{
 .collapse.show {
   visibility: visible !important;
 }
+
+/* Prevent horizontal scroll caused by off-screen AOS animation start states */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
