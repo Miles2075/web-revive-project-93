@@ -102,11 +102,13 @@ function Index() {
     return () => form.removeEventListener("submit", onSubmit);
   }, []);
 
-  // Fallback mobile nav toggle (works even if Bootstrap's collapse plugin is unavailable).
+  // Mobile nav toggle handled here so it works regardless of Bootstrap's collapse plugin.
   useEffect(() => {
     const toggler = document.querySelector<HTMLButtonElement>(".navbar-toggler");
     const panel = document.querySelector<HTMLElement>("#navbarSupportedContent");
     if (!toggler || !panel) return;
+    // Prevent Bootstrap's own handler from also toggling (which would cancel ours out).
+    toggler.removeAttribute("data-toggle");
 
     const setOpen = (open: boolean) => {
       panel.classList.remove("collapsing");
