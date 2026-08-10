@@ -1939,3 +1939,43 @@ html, body {
   overflow-x: hidden;
   max-width: 100%;
 }
+
+/* --- Mobile nav panel hardening (keeps links visible above all sections) --- */
+@media (max-width: 767px) {
+  .navbar { position: relative; }
+  .navbar-collapse.show,
+  .navbar-collapse.collapsing {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    z-index: 1050;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .navbar-collapse.show .navbar-nav,
+  .navbar-collapse.collapsing .navbar-nav {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+  }
+  .navbar-collapse .nav-item {
+    display: block !important;
+    width: 100%;
+    border-bottom: 1px solid #eceff3;
+  }
+  .navbar-collapse .nav-item:last-child { border-bottom: 0; }
+  .navbar-collapse .nav-link {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #212121 !important;
+    font-size: 16px;
+    padding: 12px 20px !important;
+  }
+}

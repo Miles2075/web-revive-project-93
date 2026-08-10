@@ -102,5 +102,33 @@ function Index() {
     return () => form.removeEventListener("submit", onSubmit);
   }, []);
 
+  // Mobile nav toggle handled here so it works regardless of Bootstrap's collapse plugin.
+  useEffect(() => {
+    const toggler = document.querySelector<HTMLButtonElement>(".navbar-toggler");
+    const panel = document.querySelector<HTMLElement>("#navbarSupportedContent");
+    if (!toggler || !panel) return;
+    // Prevent Bootstrap's own handler from also toggling (which would cancel ours out).
+    toggler.removeAttribute("data-toggle");
+
+    const setOpen = (open: boolean) => {
+      panel.classList.remove("collapsing");
+      panel.classList.toggle("show", open);
+      panel.style.height = "";
+      toggler.setAttribute("aria-expanded", String(open));
+    };
+
+    const onToggle = () => setOpen(!panel.classList.contains("show"));
+    const onLinkClick = () => setOpen(false);
+
+    toggler.addEventListener("click", onToggle);
+    const links = Array.from(panel.querySelectorAll<HTMLAnchorElement>("a.nav-link"));
+    links.forEach((a) => a.addEventListener("click", onLinkClick));
+
+    return () => {
+      toggler.removeEventListener("click", onToggle);
+      links.forEach((a) => a.removeEventListener("click", onLinkClick));
+    };
+  }, []);
+
   return <div dangerouslySetInnerHTML={{ __html: siteHtml }} />;
 }
