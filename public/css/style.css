@@ -1979,3 +1979,30 @@ html, body {
     padding: 12px 20px !important;
   }
 }
+
+/* Mobile text alignment fixes */
+@media screen and (max-width: 767px) {
+  .feature-style1 .feature-text,
+  .about-us__content p,
+  .about-us__content__text,
+  .services-section__content__text,
+  .sectiontitle,
+  p {
+    text-align: left;
+    text-justify: auto;
+    word-spacing: normal;
+  }
+  .feature-style1 {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .feature-style1 .feature-title,
+  .feature-style1 .feature-title a {
+    text-align: center;
+  }
+  .section-heading,
+  .section-heading .sectiontitle {
+    text-align: left;
+  }
+}
