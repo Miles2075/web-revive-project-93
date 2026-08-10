@@ -2006,3 +2006,16 @@ html, body {
     text-align: left;
   }
 }
+
+/* Center the mission/vision circle icons (img is display:block, so line-height centering fails) */
+.vs-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.feature-style1 .vs-icon img {
+  display: block;
+  margin: 0 auto;
+  max-width: 60px;
+  object-fit: contain;
+}
