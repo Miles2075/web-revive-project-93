@@ -24,5 +24,5 @@ export default defineMcp({
     listProductsTool,
     getProductTool,
     getContactDetailsTool,
-  ] as unknown as AnyToolDefinition[],
+  ] as unknown as ToolDefinition[],
 });
