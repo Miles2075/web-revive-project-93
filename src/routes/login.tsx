@@ -13,7 +13,7 @@ function safeNext(value: unknown): string {
 
 export const Route = createFileRoute("/login")({
   ssr: false,
-  validateSearch: (search: Record<string, unknown>) => ({ next: safeNext(search.next) }),
+  validateSearch: (search: Record<string, unknown>) => ({ next: safeNext(search['next']) }),
   head: () => ({
     meta: [
       { title: "Sign in | Suman Industries" },
