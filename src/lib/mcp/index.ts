@@ -1,4 +1,6 @@
-import { auth, defineMcp, type ToolDefinition } from "@lovable.dev/mcp-js";
+import { auth, defineMcp } from "@lovable.dev/mcp-js";
+
+type McpTools = Parameters<typeof defineMcp>[0]["tools"];
 
 import getCompanyInfoTool from "./tools/get-company-info";
 import getContactDetailsTool from "./tools/get-contact-details";
@@ -24,5 +26,5 @@ export default defineMcp({
     listProductsTool,
     getProductTool,
     getContactDetailsTool,
-  ] as unknown as ToolDefinition[],
+  ] as unknown as McpTools,
 });
